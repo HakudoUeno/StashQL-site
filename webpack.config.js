@@ -3,7 +3,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: ["regenerator-runtime/runtime.js", "./src/index.js"],
+  entry: ["regenerator-runtime/runtime.js", "./client/index.js"],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './client/views/index.html'
     })
   ],
   devServer: {
