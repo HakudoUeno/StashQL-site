@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const subscribeController = require('./controllers/subscribeController');
 
 const app = express();
 
@@ -16,6 +17,10 @@ if (process.env.NODE_ENV === 'production') {
      return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
   });
 }
+
+app.post('/api/subscribe', subscribeController.subscribe, (req, res) => {
+  return res.status(200).json(res.locals.data);
+});
 
 app.use('*', (req,res) => {
     res.status(404).send('Not Found');

@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 
 const Subscribe = (props) => {
   return (
-    <div>
-      <h3>Stay updated</h3>
-      <h5>StashQL is constantly being improved on by our team of engineers. If you'd like to stay updated on all the changes to come, subscribe for our newsletter!</h5>
-      <input className='subscribeBox'
+    <div id='subscribeModal'>
+      <h4>Stay updated</h4>
+      <h6>Subscribe for the latest StashQL news and updates!</h6>
+      <div id='inputBtn'>
+        <input
+          onChange={(e) => {props.updateEmail(e.target.value); props.updateDisplayText()}}
+          id='subscribeInput'
           placeholder='Enter your email'
+          value={props.email}
           type='text'
-      />
-      <button id='subscribeButton' onClick={() => {props.subscribe()}}>
-        Subscribe
-      </button>
+        />
+        <button id='subscribeBtn' onClick={() => {props.subscribe()}}>
+          Subscribe
+        </button>
+      </div>
+      <div>
+        {props.displayText && <h6 id='signedUpText'>You're signed up for our newsletter!</h6>}
+      </div>
     </div>
   )
 };
